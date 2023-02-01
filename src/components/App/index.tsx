@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
-import "./App.css";
 import { ITasks } from "../../interface/ITasks";
 import { nanoid } from "nanoid";
 import Todo from "../Todo";
 import Form from "../Form";
 import usePrevious from "../../hooks/usePrevious";
 import FilterButton from "../FilterButton";
+import "./App.css";
 
 type PropsApp = {
   allTasks: ITasks[];
@@ -102,17 +102,25 @@ function App({ allTasks }: PropsApp) {
   }, [tasks.length, prevTaskLength]);
 
   return (
-    <div className="todoapp stack-large">
-      <h1>TodoMatic</h1>
-      <Form addTask={addTask} />
-      <div className="filters btn-group stack-exception">{filterList}</div>
-      <h2 id="list-heading" tabIndex={-1} ref={listHeadingRef}>
+    <div className="todoapp">
+      {" "}
+      {/*stack-large*/}
+      <h1 className="todoapp__title">TodoMatic</h1>
+      <Form addTask={addTask} className="todoapp__form" />
+      <div className="todoapp__filters btn-group">
+        {/*stack-exception*/}
+        {filterList}
+      </div>
+      <h2
+        id="list-heading"
+        tabIndex={-1}
+        ref={listHeadingRef}
+        className="todoapp__subtitle"
+      >
         {headingText}
       </h2>{" "}
-      <ul
-        className="todo-list stack-large stack-exception"
-        aria-labelledby="list-heading"
-      >
+      <ul className="todo-list" aria-labelledby="list-heading">
+        {/*stack-large stack-exception*/}
         {taskList}
       </ul>
     </div>

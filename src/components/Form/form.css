@@ -1,0 +1,47 @@
+.form {
+  max-width: 100%;
+}
+
+.form__title{
+  margin: 0;
+  flex: 0 0 100%;
+  text-align: center;
+}
+
+.label{
+  display: block;
+}
+
+.label__lg {
+  line-height: 1.01567;
+  font-weight: 300;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.input__lg {
+  padding: 2rem;
+  border: 2px solid var(--color-09);
+}
+
+.input__lg:focus {
+  border-color: var(--color-03);
+  box-shadow: inset 0 0 0 2px;
+}
+
+.label__lg, .input__lg, .btn__lg {
+  display: inline-block;
+  width: 100%;
+  font-size: 1.9rem;
+}
+
+[class*="__lg"]:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+@media screen and (min-width: 620px) {
+  .label__lg, .input__lg, .btn__lg {
+    font-size: 2.4rem;
+  }
+}

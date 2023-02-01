@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import usePrevious from "../../hooks/usePrevious";
+import "./todo.css";
 
 type PropsTodo = {
   id: string;
@@ -29,7 +30,7 @@ export default function Todo({
   //template de edição
   const editingTemplate = (
     <form
-      className="stack-small"
+      className="todo__form-edit"
       onSubmit={(event) => {
         event.preventDefault();
         editTask(id, newName);
@@ -37,13 +38,14 @@ export default function Todo({
         setEditing(false);
       }}
     >
-      <div className="form-group">
-        <label className="todo-label" htmlFor={id}>
+      {/*stack-small*/}
+      <div className="todo__form-group">
+        <label className="todo__label" htmlFor={id}>
           New name for {name}
         </label>
         <input
           id={id}
-          className="todo-text"
+          className="todo__input todo__text"
           type="text"
           value={newName}
           onChange={(event) => {
@@ -55,13 +57,13 @@ export default function Todo({
       <div className="btn-group">
         <button
           type="button"
-          className="btn todo-cancel"
+          className="btn todo__cancel"
           onClick={() => setEditing(false)}
         >
           Cancel
           <span className="visually-hidden">renaming {name}</span>
         </button>
-        <button type="submit" className="btn btn__primary todo-edit">
+        <button type="submit" className="btn btn__primary todo__edit">
           Save
           <span className="visually-hidden">new name for {name}</span>
         </button>
@@ -71,15 +73,19 @@ export default function Todo({
 
   //template de visualização
   const viewTemplate = (
-    <div className="stack-small">
-      <div className="c-cb">
+    <div className="todo__view">
+      {/*stack-small*/}
+      <div className="todo__wrapper-check">
+        {/*c-cb*/}
         <input
           id={id}
           type="checkbox"
           defaultChecked={completed}
           onChange={() => toggleTaskCompleted(id)}
+          className="todo__input todo__checkbox"
         />
-        <label className="todo-label" htmlFor={id}>
+        <label className="todo__label" htmlFor={id}>
+          {/*todo-label*/}
           {name}
         </label>
       </div>

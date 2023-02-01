@@ -1,1 +1,65 @@
+.todoapp {
+  background: var(--color-05);
+  margin: 2rem 0 4rem 0;
+  padding: 1rem;
+  position: relative;
+  box-shadow: 0 2px 4px 0 var(--box-shadow-2),
+    0 2.5rem 5rem 0 var(--box-shadow-1);
+}
 
+.todoapp__title,
+.todoapp__filters,
+.todoapp__subtitle,
+.todo-list {
+  max-width: 50rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.todoapp__title {
+  display: block;
+  max-width: 100%;
+  text-align: center;
+  margin: 0;
+  margin-bottom: 3.5rem;
+}
+
+.todoapp__subtitle{
+  margin: 0 auto 0 auto;
+}
+
+.todoapp__form,
+.todoapp__filters,
+.todoapp__subtitle {
+  margin-bottom: 2.5rem;
+}
+
+.todoapp__filters {
+  width: 100%;
+  margin: unset auto;
+}
+
+.todo-list {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  gap: 2.5rem;
+  margin: 0 auto 0 auto;
+}
+
+@media screen and (min-width: 550px) {
+  .todoapp {
+    padding: 4rem;
+  }
+
+  .todoapp__title,
+  .todoapp__form,
+  .todoapp__filters,
+  .todoapp__subtitle {
+    margin-bottom: 2.8rem;
+  }
+
+  .todo-list {
+    gap: 2.8rem;
+  }
+}

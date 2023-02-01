@@ -1,13 +1,19 @@
 import React, { useState } from "react";
+import classNames from "classnames";
+import "./form.css";
 
 type PropsForm = {
   addTask: (name: string) => void;
+  className?: string;
 };
 
-export default function Form({ addTask }: PropsForm) {
+export default function Form({ addTask, className }: PropsForm) {
+  const classNameMaped = classNames("form", className);
   const [name, setName] = useState("");
+
   return (
     <form
+      className={classNameMaped}
       onSubmit={(event) => {
         event.preventDefault();
         if (name !== "") {
@@ -16,8 +22,9 @@ export default function Form({ addTask }: PropsForm) {
         }
       }}
     >
-      <h2 className="label-wrapper">
-        <label htmlFor="new-todo-input" className="label__lg">
+      <h2 className="form__title">
+        {/*label-wrapper*/}
+        <label htmlFor="new-todo-input" className="label label__lg">
           What needs to be done?
         </label>
       </h2>
@@ -27,14 +34,10 @@ export default function Form({ addTask }: PropsForm) {
         className="input input__lg"
         name="text"
         autoComplete="off"
-        value={
-          name
-        } 
-        onChange={
-          (event) => {
-            setName(event.target.value);
-          }
-        }
+        value={name}
+        onChange={(event) => {
+          setName(event.target.value);
+        }}
       />
       <button type="submit" className="btn btn__primary btn__lg">
         Add
