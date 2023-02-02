@@ -1,5 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import usePrevious from "../../hooks/usePrevious";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBan, faFloppyDisk, faPenToSquare, faTrash } from "@fortawesome/free-solid-svg-icons";
 import "./todo.css";
 
 type PropsTodo = {
@@ -71,11 +73,11 @@ export default function Todo({
           className="btn todo__cancel"
           onClick={() => setEditing(false)}
         >
-          Cancelar
+          Cancelar <FontAwesomeIcon icon={faBan} />
           <span className="visually-hidden">renomeando {name}</span>
         </button>
         <button type="submit" className="btn btn__primary todo__edit">
-          Salvar
+          Salvar <FontAwesomeIcon icon={faFloppyDisk} />
           <span className="visually-hidden">novo nome para {name}</span>
         </button>
       </div>
@@ -104,14 +106,14 @@ export default function Todo({
           onClick={() => setEditing(true)}
           ref={editButtonRef}
         >
-          Editar <span className="visually-hidden">{name}</span>
+          Editar <FontAwesomeIcon icon={faPenToSquare} /> <span className="visually-hidden">{name}</span>
         </button>
         <button
           type="button"
           className="btn btn__danger"
           onClick={() => deleteTask(id)}
         >
-          Excluir <span className="visually-hidden">{name}</span>
+          Excluir <FontAwesomeIcon icon={faTrash} /> <span className="visually-hidden">{name}</span>
         </button>
       </div>
     </div>

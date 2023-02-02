@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import classNames from "classnames";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
 import "./form.css";
 
 type PropsForm = {
@@ -49,7 +51,7 @@ export default function Form({ addTask, className }: PropsForm) {
         </p>
       )}
       <button type="submit" className="btn btn__primary btn__lg">
-        Add
+        Add <FontAwesomeIcon icon={faCirclePlus} />
       </button>
     </form>
   );

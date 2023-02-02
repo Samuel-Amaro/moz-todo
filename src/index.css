@@ -20,6 +20,10 @@
   cursor: pointer;
   text-transform: capitalize;
   flex: 1 1 49%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
 }
 
 .btn--toggle {

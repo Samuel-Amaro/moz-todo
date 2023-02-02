@@ -5,6 +5,8 @@ import Todo from "../Todo";
 import Form from "../Form";
 import usePrevious from "../../hooks/usePrevious";
 import FilterButton from "../FilterButton";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleCheck, faCirclePlus } from "@fortawesome/free-solid-svg-icons";
 import "./App.css";
 
 
@@ -112,7 +114,7 @@ function App() {
 
   return (
     <div className="todoapp">
-      <h1 className="todoapp__title">TodoMatic</h1>
+      <h1 className="todoapp__title">TodoMatic <FontAwesomeIcon icon={faCircleCheck} /></h1>
       {tasks.length === 0 ? (
         <>
           <p>Ola, você não possui tarefas.</p>
