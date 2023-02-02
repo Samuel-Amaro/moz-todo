@@ -1,7 +1,12 @@
 import React, { useRef, useEffect, useState } from "react";
 import usePrevious from "../../hooks/usePrevious";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBan, faFloppyDisk, faPenToSquare, faTrash } from "@fortawesome/free-solid-svg-icons";
+import {
+  faBan,
+  faFloppyDisk,
+  faPenToSquare,
+  faTrash,
+} from "@fortawesome/free-solid-svg-icons";
 import "./todo.css";
 
 type PropsTodo = {
@@ -29,7 +34,6 @@ export default function Todo({
   const editButtonRef = useRef<HTMLButtonElement>(null);
 
   const wasEditing = usePrevious(isEditing);
-
 
   //template de edição
   const editingTemplate = (
@@ -95,9 +99,25 @@ export default function Todo({
           onChange={() => toggleTaskCompleted(id)}
           className="todo__input todo__checkbox"
         />
-        <label className="todo__label" htmlFor={id}>
-          {name}
-        </label>
+        <div className="todo__datas">
+          <label className="todo__label" htmlFor={id}>
+            {name}
+          </label>
+          <div className="todo__wrapper-dates">
+            <p className="todo__wrapper-date">
+              <span className="todo__data">Criado em:</span>
+              <time className="todo__date-created" dateTime="2023-01-10 12:10">
+                10/01/2023 12:10
+              </time>
+            </p>
+            <p className="todo__wrapper-date">
+              <span className="todo__data">Ultima modificação:</span>
+              <time className="todo__date-modifier" dateTime="2023-01-12 11:00">
+                12/01/2023 11:00
+              </time>
+            </p>
+          </div>
+        </div>
       </div>
       <div className="btn-group">
         <button
@@ -106,14 +126,16 @@ export default function Todo({
           onClick={() => setEditing(true)}
           ref={editButtonRef}
         >
-          Editar <FontAwesomeIcon icon={faPenToSquare} /> <span className="visually-hidden">{name}</span>
+          Editar <FontAwesomeIcon icon={faPenToSquare} />{" "}
+          <span className="visually-hidden">{name}</span>
         </button>
         <button
           type="button"
           className="btn btn__danger"
           onClick={() => deleteTask(id)}
         >
-          Excluir <FontAwesomeIcon icon={faTrash} /> <span className="visually-hidden">{name}</span>
+          Excluir <FontAwesomeIcon icon={faTrash} />{" "}
+          <span className="visually-hidden">{name}</span>
         </button>
       </div>
     </div>

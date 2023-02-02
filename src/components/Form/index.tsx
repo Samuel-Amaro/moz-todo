@@ -51,7 +51,7 @@ export default function Form({ addTask, className }: PropsForm) {
         </p>
       )}
       <button type="submit" className="btn btn__primary btn__lg">
-        Add <FontAwesomeIcon icon={faCirclePlus} />
+        Adicionar <FontAwesomeIcon icon={faCirclePlus} />
       </button>
     </form>
   );

@@ -1,7 +1,7 @@
-.todo {
+/*.todo {
   display: flex;
   flex-flow: row wrap;
-}
+}*/
 
 .todo__view,
 .todo__form-edit {
@@ -43,6 +43,7 @@
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
+  gap: 15px;
 }
 
 .todo__checkbox {
@@ -59,7 +60,7 @@
   border: 2px solid currentColor;
   background: transparent;
   position: relative;
-  flex: 1 1 auto;
+  flex: 1 0 44px;
 }
 
 .todo__checkbox::before{
@@ -87,13 +88,45 @@
   font-family: inherit;
   line-height: inherit;
   display: block;
-  margin-bottom: 0;
-  padding: 8px 15px 5px;
+  margin-bottom: 3px;
+  padding: 0;/*8px 15px 5px*/
   cursor: pointer;
   touch-action: manipulation;
-  flex: 2 2 100%;
+  width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.todo__datas{
+  flex: 2 2 100%;
+  width: calc(100% - 60px);
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: flex-start;
+}
+
+.todo__date-created, .todo__data, .todo__date-modifier{
+  display: inline-block;
+}
+
+.todo__data{
+  font-weight: bold;
+  margin: 0 2px 0 0;
+}
+
+.todo__wrapper-date{
+  margin: 0;
+  padding: 0;
+}
+
+.todo__wrapper-dates{
+  padding: 0 0 0;
+  display: flex;
+  width: 100%;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.30rem;
 }
 
 @media screen and (min-width: 550px) {
