@@ -23,9 +23,8 @@ export default function Form({ addTask, className }: PropsForm) {
       }}
     >
       <h2 className="form__title">
-        {/*label-wrapper*/}
         <label htmlFor="new-todo-input" className="label label__lg">
-          What needs to be done?
+          O que precisa ser feito?
         </label>
       </h2>
       <input

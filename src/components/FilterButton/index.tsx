@@ -14,10 +14,9 @@ export default function FilterButton({name, isPressed, setFilter}: PropsFilterBu
         aria-pressed={isPressed}
         onClick={() => setFilter(name)}
       >
-        {/*toggle-btn*/}
-        <span className="visually-hidden">Show </span>
+        <span className="visually-hidden">Mostrar </span>
         <span>{name}</span>
-        <span className="visually-hidden"> tasks</span>
+        <span className="visually-hidden"> tarefas</span>
       </button>
     );
 }

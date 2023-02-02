@@ -20,7 +20,7 @@ export default function Todo({
   editTask,
 }: PropsTodo) {
   const [isEditing, setEditing] = useState(false);
-  const [newName, setNewName] = useState("");
+  const [newName, setNewName] = useState(name);
 
   const editFieldRef = useRef<HTMLInputElement>(null);
   const editButtonRef = useRef<HTMLButtonElement>(null);
@@ -38,10 +38,9 @@ export default function Todo({
         setEditing(false);
       }}
     >
-      {/*stack-small*/}
       <div className="todo__form-group">
         <label className="todo__label" htmlFor={id}>
-          New name for {name}
+          Novo nome para <del>{name}</del>
         </label>
         <input
           id={id}
@@ -60,12 +59,12 @@ export default function Todo({
           className="btn todo__cancel"
           onClick={() => setEditing(false)}
         >
-          Cancel
-          <span className="visually-hidden">renaming {name}</span>
+          Cancelar
+          <span className="visually-hidden">renomeando {name}</span>
         </button>
         <button type="submit" className="btn btn__primary todo__edit">
-          Save
-          <span className="visually-hidden">new name for {name}</span>
+          Salvar
+          <span className="visually-hidden">novo nome para {name}</span>
         </button>
       </div>
     </form>
@@ -74,9 +73,7 @@ export default function Todo({
   //template de visualização
   const viewTemplate = (
     <div className="todo__view">
-      {/*stack-small*/}
       <div className="todo__wrapper-check">
-        {/*c-cb*/}
         <input
           id={id}
           type="checkbox"
@@ -85,7 +82,6 @@ export default function Todo({
           className="todo__input todo__checkbox"
         />
         <label className="todo__label" htmlFor={id}>
-          {/*todo-label*/}
           {name}
         </label>
       </div>
@@ -96,14 +92,14 @@ export default function Todo({
           onClick={() => setEditing(true)}
           ref={editButtonRef}
         >
-          Edit <span className="visually-hidden">{name}</span>
+          Editar <span className="visually-hidden">{name}</span>
         </button>
         <button
           type="button"
           className="btn btn__danger"
           onClick={() => deleteTask(id)}
         >
-          Delete <span className="visually-hidden">{name}</span>
+          Excluir <span className="visually-hidden">{name}</span>
         </button>
       </div>
     </div>
