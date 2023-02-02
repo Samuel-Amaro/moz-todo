@@ -8,6 +8,10 @@
   text-align: center;
 }
 
+.form__error{
+  margin: 0 0 0.8rem 0;
+}
+
 .label{
   display: block;
 }

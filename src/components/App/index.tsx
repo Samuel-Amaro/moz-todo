@@ -100,16 +100,14 @@ function App() {
 
   useEffect(() => {
     if (tasks.length - prevTaskLength === -1) {
-      if (!listHeadingRef.current) {
-        throw Error("listHeadingRef is not assigned");
+      if (listHeadingRef.current) {
+        listHeadingRef.current.focus();
       }
-      listHeadingRef.current.focus();
     }
   }, [tasks.length, prevTaskLength]);
 
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
-    console.log("add");
   }, [tasks]);
 
   return (
@@ -117,7 +115,7 @@ function App() {
       <h1 className="todoapp__title">TodoMatic</h1>
       {tasks.length === 0 ? (
         <>
-          <p>Não ha tarefas</p>
+          <p>Ola, você não possui tarefas.</p>
           <Form addTask={addTask} className="todoapp__form" />
         </>
       ) : (

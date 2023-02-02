@@ -10,15 +10,19 @@ type PropsForm = {
 export default function Form({ addTask, className }: PropsForm) {
   const classNameMaped = classNames("form", className);
   const [name, setName] = useState("");
+  const [formError, setFormError] = useState("");
 
   return (
     <form
       className={classNameMaped}
       onSubmit={(event) => {
         event.preventDefault();
-        if (name !== "") {
+        if (name.trim() !== "") {
           addTask(name);
           setName("");
+          setFormError("");
+        } else {
+          setFormError("Informe um nome para a tarefa");
         }
       }}
     >
@@ -37,7 +41,13 @@ export default function Form({ addTask, className }: PropsForm) {
         onChange={(event) => {
           setName(event.target.value);
         }}
+        title="O que precisa ser feito?"
       />
+      {formError && (
+        <p className="error form__error" aria-live="polite">
+          {formError}
+        </p>
+      )}
       <button type="submit" className="btn btn__primary btn__lg">
         Add
       </button>

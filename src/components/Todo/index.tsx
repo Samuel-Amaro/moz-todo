@@ -20,12 +20,14 @@ export default function Todo({
   editTask,
 }: PropsTodo) {
   const [isEditing, setEditing] = useState(false);
-  const [newName, setNewName] = useState(name);
+  const [newName, setNewName] = useState("");
+  const [formError, setFormError] = useState("");
 
   const editFieldRef = useRef<HTMLInputElement>(null);
   const editButtonRef = useRef<HTMLButtonElement>(null);
 
   const wasEditing = usePrevious(isEditing);
+
 
   //template de edição
   const editingTemplate = (
@@ -33,9 +35,14 @@ export default function Todo({
       className="todo__form-edit"
       onSubmit={(event) => {
         event.preventDefault();
-        editTask(id, newName);
-        setNewName("");
-        setEditing(false);
+        if (newName.trim() !== "") {
+          editTask(id, newName);
+          setNewName("");
+          setEditing(false);
+          setFormError("");
+        } else {
+          setFormError("E necessário informar o novo nome");
+        }
       }}
     >
       <div className="todo__form-group">
@@ -53,6 +60,11 @@ export default function Todo({
           ref={editFieldRef}
         />
       </div>
+      {formError && (
+        <p className="error todo__error" aria-live="polite">
+          {formError}
+        </p>
+      )}
       <div className="btn-group">
         <button
           type="button"

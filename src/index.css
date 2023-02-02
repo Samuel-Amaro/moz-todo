@@ -63,6 +63,10 @@
   white-space: nowrap;
 }
 
+.error{
+  font-size: 1.5rem;
+  color: var(--color-07);
+}
 
 
 
