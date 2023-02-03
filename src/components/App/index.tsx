@@ -6,7 +6,7 @@ import Form from "../Form";
 import usePrevious from "../../hooks/usePrevious";
 import FilterButton from "../FilterButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleCheck, faCirclePlus } from "@fortawesome/free-solid-svg-icons";
+import { faCircleCheck} from "@fortawesome/free-solid-svg-icons";
 import "./App.css";
 
 
@@ -39,14 +39,14 @@ function App() {
   const [filter, setFilter] = useState("Todos");
 
   function addTask(name: string) {
-    const newTask = { id: `todo-${nanoid()}`, name, completed: false };
+    const newTask: ITasks = { id: `todo-${nanoid()}`, name, completed: false, dateIsTimeCreation: new Date(), dateIsTimeModification: new Date()};
     setTasks([...tasks, newTask]);
   }
 
   function toggleTaskCompleted(id: string) {
     const updateTasks = tasks.map((task) => {
       if (id === task.id) {
-        return { ...task, completed: !task.completed };
+        return { ...task, completed: !task.completed, dateIsTimeModification: new Date()};
       }
       return task;
     });
@@ -61,7 +61,7 @@ function App() {
   function editTask(id: string, newName: string) {
     const editedTaskList = tasks.map((task) => {
       if (id === task.id) {
-        return { ...task, name: newName };
+        return { ...task, name: newName, dateIsTimeModification: new Date()};
       }
       return task;
     });
@@ -78,6 +78,8 @@ function App() {
         toggleTaskCompleted={toggleTaskCompleted}
         deleteTask={deleteTask}
         editTask={editTask}
+        dateIsTimeCreation={task.dateIsTimeCreation}
+        dateIsTimeModification={task.dateIsTimeModification}
       />
     );
   });

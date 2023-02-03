@@ -8,15 +8,13 @@ import {
   faTrash,
 } from "@fortawesome/free-solid-svg-icons";
 import "./todo.css";
+import { ITasks } from "../../interface/ITasks";
 
-type PropsTodo = {
-  id: string;
-  name: string;
-  completed: boolean;
+interface PropsTodo extends ITasks {
   toggleTaskCompleted: (id: string) => void;
   deleteTask: (id: string) => void;
   editTask: (id: string, newName: string) => void;
-};
+}
 
 export default function Todo({
   id,
@@ -25,6 +23,8 @@ export default function Todo({
   toggleTaskCompleted,
   deleteTask,
   editTask,
+  dateIsTimeCreation,
+  dateIsTimeModification
 }: PropsTodo) {
   const [isEditing, setEditing] = useState(false);
   const [newName, setNewName] = useState("");
@@ -106,14 +106,24 @@ export default function Todo({
           <div className="todo__wrapper-dates">
             <p className="todo__wrapper-date">
               <span className="todo__data">Criado em:</span>
-              <time className="todo__date-created" dateTime="2023-01-10 12:10">
-                10/01/2023 12:10
+              <time
+                className="todo__date-created"
+                dateTime={`${dateIsTimeCreation.getFullYear()}-${
+                  dateIsTimeCreation.getMonth() + 1
+                }-${dateIsTimeCreation.getDate()} ${dateIsTimeCreation.getHours()}:${dateIsTimeCreation.getMinutes()}:${dateIsTimeCreation.getSeconds()}.${dateIsTimeCreation.getMilliseconds()}`}
+              >
+                {dateIsTimeCreation.toLocaleString()}
               </time>
             </p>
             <p className="todo__wrapper-date">
               <span className="todo__data">Ultima modificação:</span>
-              <time className="todo__date-modifier" dateTime="2023-01-12 11:00">
-                12/01/2023 11:00
+              <time
+                className="todo__date-modifier"
+                dateTime={`${dateIsTimeModification.getFullYear()}-${
+                  dateIsTimeModification.getMonth() + 1
+                }-${dateIsTimeModification.getDate()} ${dateIsTimeModification.getHours()}:${dateIsTimeModification.getMinutes()}:${dateIsTimeModification.getSeconds()}.${dateIsTimeModification.getMilliseconds()}`}
+              >
+                {dateIsTimeModification.toLocaleString()}
               </time>
             </p>
           </div>
