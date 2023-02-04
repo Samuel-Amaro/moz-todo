@@ -34,7 +34,6 @@ function App() {
 
   function addTask(name: string) {
     const newTask: ITasks = { id: `todo-${nanoid()}`, name, completed: false, dateIsTimeCreation: new Date(), dateIsTimeModification: new Date()};
-    console.log(new Date() instanceof Date);
     setTasks([...tasks, newTask]);
   }
 

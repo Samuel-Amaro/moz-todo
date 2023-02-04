@@ -27,8 +27,8 @@ Como usuário, posso
 
 ### Links
 
- - Solution URL: [Repository Project]()
- - Live Site URL: [Result Live]()
+ - Solution URL: [Repository Project](https://github.com/Samuel-Amaro/moz-todo)
+ - Live Site URL: [Result Live](https://samuel-amaro.github.io/moz-todo/)
 
 ### Construído com
 
