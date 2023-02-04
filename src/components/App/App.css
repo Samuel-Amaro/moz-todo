@@ -36,7 +36,7 @@
 
 .todoapp__filters {
   width: 100%;
-  margin: unset auto;
+  margin: 0 auto unset auto;
 }
 
 .todo-list {
