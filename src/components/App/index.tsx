@@ -8,6 +8,7 @@ import FilterButton from "../FilterButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleCheck} from "@fortawesome/free-solid-svg-icons";
 import "./App.css";
+import { useLocalStorage } from "../../hooks/useLocalStorage";
 
 
 interface Filter {
@@ -27,19 +28,13 @@ const FILTER_NAMES = Object.keys(FILTER_MAP);
 
 function App() {
 
-  useEffect(() => {
-    const itens = localStorage.getItem("tasks");
-    if (itens) {
-      setTasks(JSON.parse(itens));
-    }
-  }, []);
-
-  const [tasks, setTasks] = useState<ITasks[]>([]);
+  const [tasks, setTasks] = useLocalStorage<ITasks[]>("tasks", []);
 
   const [filter, setFilter] = useState("Todos");
 
   function addTask(name: string) {
     const newTask: ITasks = { id: `todo-${nanoid()}`, name, completed: false, dateIsTimeCreation: new Date(), dateIsTimeModification: new Date()};
+    console.log(new Date() instanceof Date);
     setTasks([...tasks, newTask]);
   }
 
@@ -109,10 +104,6 @@ function App() {
       }
     }
   }, [tasks.length, prevTaskLength]);
-
-  useEffect(() => {
-    localStorage.setItem("tasks", JSON.stringify(tasks));
-  }, [tasks]);
 
   return (
     <div className="todoapp">

@@ -1,4 +1,4 @@
-export type ITasks = {
+export interface  ITasks {
     id: string,
     name: string,
     completed: boolean,
