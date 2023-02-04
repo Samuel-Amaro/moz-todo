@@ -25,18 +25,18 @@
 }
 
 .todoapp__subtitle{
-  margin: 0 auto 0 auto;
+  margin: 0 auto;
+}
+
+.todoapp__filters {
+  width: 100%;
+  margin: 0 auto;
 }
 
 .todoapp__form,
 .todoapp__filters,
 .todoapp__subtitle {
   margin-bottom: 2.5rem;
-}
-
-.todoapp__filters {
-  width: 100%;
-  margin: 0 auto unset auto;
 }
 
 .todo-list {
